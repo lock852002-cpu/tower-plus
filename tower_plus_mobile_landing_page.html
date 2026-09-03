@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tower+™ 電解質活力沖飲 - 官方訂購</title>
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --primary-light: #2e7d32;
+            --accent: #a3e635;
+            --bg-light: #f7f9f6;
+            --card-bg: #ffffff;
+            --text-main: #2b332c;
+            --text-sub: #556b5a;
+            --border-color: #e1e8e2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 80px; /* 為底部固定按鈕留空 */
+        }
+
+        /* 頂部 Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo span {
+            color: var(--primary-light);
+        }
+
+        .header-tag {
+            font-size: 12px;
+            background-color: #e8f5e9;
+            color: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* 主容器 (手機寬度最佳化) */
+        .mobile-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 12px;
+        }
+
+        /* 卡片通用樣式 */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+        }
+
+        /* 標題樣式 */
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hero 區塊 */
+        .hero-banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* 賣點橫向標籤列 (手機可滑動) */
+        .badges-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .badge-chip {
+            flex: 0 0 auto;
+            background: #f0f7f1;
+            border: 1px solid #d4e8d6;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* 產品圖片藝廊 (高質感展示) */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .img-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            color: #ffffff;
+            padding: 20px 12px 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 四大數據點 (圖文排版) */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .spec-box {
+            background: #f8faf8;
+            border: 1px solid #e2ebd3;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .spec-value {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+
+        /* 價格方案卡片 (大尺寸按鈕觸控區) */
+        .price-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .price-card.active {
+            border-color: var(--primary-light);
+            background-color: #f4fbf5;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.12);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -10px;
+            right: 12px;
+            background: var(--primary-light);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .price-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .price-sub {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+
+        .price-num {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-top: 8px;
+        }
+
+        /* 成分表格 (手機流暢顯示) */
+        .ingr-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .ingr-table th, .ingr-table td {
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .ingr-table th {
+            color: var(--primary-light);
+            font-weight: 700;
+            background-color: #f8faf8;
+        }
+
+        /* 列表樣式 */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* 最佳時機框 */
+        .timing-box {
+            background-color: #f4fbf5;
+            border-left: 4px solid var(--primary-light);
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .timing-item {
+            font-size: 13px;
+            margin-top: 6px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* 手機表單優化 */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px; /* 防止 iOS 自動放大的字體大小 */
+            background-color: #fff;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+        }
+
+        .total-box {
+            background: #f4fbf5;
+            padding: 14px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 18px 0;
+            border: 1px solid #d4e8d6;
+        }
+
+        .total-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .total-amount {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-light);
+        }
+
+        /* 底部固定行動導覽 (Sticky Bottom Bar) */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 10px 16px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottom-bar-inner {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(27, 94, 32, 0.3);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-submit:active {
+            background: var(--primary-light);
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 16px;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header>
+        <div class="brand-logo">TOWER<span>+</span></div>
+        <div class="header-tag">官方原廠直送</div>
+    </header>
+
+    <div class="mobile-container">
+
+        <!-- 1. Hero 主視覺區塊 -->
+        <section class="card">
+            <!-- 補水/運動情境大圖 -->
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="運動補充水分情境圖片" class="hero-banner-img">
+            
+            <h1 class="hero-title">Tower+™<br>電解質活力沖飲</h1>
+            <div class="hero-subtitle">補水．充電．急速恢復</div>
+            
+            <p class="hero-desc">
+                不含麩質、純素、便利獨立隨行包。專為日常高效率補水與運動恢復設計，透過最大生物利用性營養素，為身體即時充電！
+            </p>
+
+            <!-- 賣點標籤（可滑動） -->
+            <div class="badges-scroll">
+                <div class="badge-chip">🌾 不含麩質</div>
+                <div class="badge-chip">🌱 純素</div>
+                <div class="badge-chip">🧬 無基因改造</div>
+                <div class="badge-chip">🚫 無添加糖</div>
+                <div class="badge-chip">🥑 生酮友好</div>
+            </div>
+
+            <!-- 核心成分數據面板 -->
+            <div class="spec-grid">
+                <div class="spec-box">
+                    <div class="spec-value">0 g</div>
+                    <div class="spec-label">無添加糖</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">1,000 mg</div>
+                    <div class="spec-label">玫瑰鹽鈉離子</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">200 mg</div>
+                    <div class="spec-label">氯化鉀</div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-value">60 mg</div>
+                    <div class="spec-label">蘋果酸鎂</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 商品圖片藝廊 (精美呈現產品與細節) -->
+        <section class="card">
+            <h2 class="section-title">📸 產品展示與品質細節</h2>
+            <div class="product-gallery">
+                <div class="img-card">
+                    <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80" alt="清涼檸檬青檸氣泡補水飲品">
+                    <div class="img-caption">🍋 檸檬青檸風味：微酸口感，天然清爽口感極致解渴</div>
+                </div>
+                <div class="img-card">
+                    <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80" alt="喜馬拉雅玫瑰鹽礦物質礦鹽">
+                    <div class="img-caption">🏔️ 嚴選喜馬拉雅玫瑰鹽：純淨微量元素，溫和鹹甜回甘</div>
+                </div>
+                <div class="img-card">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80" alt="隨行包獨立包裝方便攜帶">
+                    <div class="img-caption">🎒 獨立條裝設計：放口袋、運動包，隨時撕開即沖即飲</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 購買方案選擇 -->
+        <section class="card" id="pricing">
+            <h2 class="section-title">💳 選擇優惠訂購方案</h2>
+
+            <div class="price-card" onclick="selectPlan('1袋', 1620, this)">
+                <div class="price-title">1 袋裝 (30包隨行裝)</div>
+                <div class="price-sub">適合初次體驗、日常隨身補充</div>
+                <div class="price-num">NT$ 1,620</div>
+            </div>
+
+            <div class="price-card active" onclick="selectPlan('2袋', 2900, this)">
+                <div class="price-badge">🔥 熱銷推薦 (現省 $340)</div>
+                <div class="price-title">2 袋超值組 (60包隨行裝)</div>
+                <div class="price-sub">高 CP 值首選，運動/長期保健最划算</div>
+                <div class="price-num">NT$ 2,900</div>
+            </div>
+        </section>
+
+        <!-- 4. 主要成分與四大核心功效 -->
+        <section class="card">
+            <h2 class="section-title">🍀 主要成分 (每包含量)</h2>
+            <table class="ingr-table">
+                <thead>
+                    <tr>
+                        <th>成分名稱</th>
+                        <th>含量</th>
+                        <th>來源型態</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>鈉</strong></td>
+                        <td>1,000 毫克</td>
+                        <td>喜馬拉雅玫瑰鹽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>鉀</strong></td>
+                        <td>200 毫克</td>
+                        <td>氯化鉀</td>
+                    </tr>
+                    <tr>
+                        <td><strong>鎂</strong></td>
+                        <td>60 毫克</td>
+                        <td>蘋果酸鎂</td>
+                    </tr>
+                    <tr>
+                        <td><strong>黑胡椒萃取物</strong></td>
+                        <td>50 毫克</td>
+                        <td>黑胡椒籽 (提高利用率)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="section-title" style="margin-top: 20px;">⚡ 四大核心功效</h2>
+            <ul class="feature-list">
+                <li><strong>補充電解質：</strong>快速補充因流汗流失的鈉、鉀、氯、鎂關鍵礦物質。</li>
+                <li><strong>促進補水與吸收：</strong>添加黑胡椒萃取物，提升營養素生物利用性。</li>
+                <li><strong>支援運動表現：</strong>運動前後飲用，維持肌肉正常功能與體力。</li>
+                <li><strong>保持思緒專注：</strong>鉀和鎂幫助維持認知表現，專注力滿分。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 喜馬拉雅玫瑰鹽優勢與品質標準 -->
+        <section class="card">
+            <h2 class="section-title">🏔️ 喜馬拉雅玫瑰鹽優勢</h2>
+            <p style="font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 10px;">
+                採自純淨無污染偏遠地區，微輕微加工，不含微塑膠。含有 <strong>84 種必需微量礦物質</strong>（如鐵、鈣、鉀），帶來溫和口感與高吸收率。
+            </p>
+
+            <h2 class="section-title" style="margin-top: 16px;">🍵 使用方式與最佳時機</h2>
+            <p style="font-size: 13px; font-weight: bold; color: var(--text-main);">
+                將 1 包活力沖飲加入 600 - 1,500 ml 清水（可依個人口味調整濃淡）拌勻即可飲用。
+            </p>
+            <div class="timing-box">
+                <div style="font-size: 13px; font-weight: bold; color: var(--primary);">⏰ 推薦飲用時機：</div>
+                <div class="timing-item">🌅 晨起第一杯 — 啟用一天順暢代謝</div>
+                <div class="timing-item">🏃 運動前 20-30 分鐘 — 提升體力與耐力</div>
+                <div class="timing-item">🚴 運動後/大汗後 — 急速恢復體能</div>
+            </div>
+        </section>
+
+        <!-- 6. 線上訂購單 (手機原生質感) -->
+        <section class="card" id="checkout">
+            <h2 class="section-title">📦 填寫訂購資料</h2>
+            <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+                <div class="form-group">
+                    <label>訂購方案</label>
+                    <select id="planSelect" class="form-control" onchange="updateFormPrice()">
+                        <option value="1袋 ($1,620)">1袋 (30包) - NT$ 1,620</option>
+                        <option value="2袋 ($2,900)" selected>2袋 (60包) - NT$ 2,900 (熱銷推薦)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>訂購數量</label>
+                    <input type="number" id="orderQty" class="form-control" value="1" min="1" max="10" onchange="updateFormPrice()">
+                </div>
+
+                <div class="form-group">
+                    <label>收件人姓名</label>
+                    <input type="text" id="custName" class="form-control" placeholder="請輸入姓名" required>
+                </div>
+
+                <div class="form-group">
+                    <label>行動電話</label>
+                    <input type="tel" id="custPhone" class="form-control" placeholder="0912345678" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>配送地址 / 超商門市</label>
+                    <input type="text" id="custAddress" class="form-control" placeholder="請輸入完整地址或門市名稱" required>
+                </div>
+
+                <div class="total-box">
+                    <span class="total-label">應付金額：</span>
+                    <span class="total-amount" id="totalPriceDisplay">NT$ 2,900</span>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    🚀 確認送出訂單
+                </button>
+            </form>
+        </section>
+
+        <footer>
+            <p>*本產品為膳食補充品，非藥品，無法替代藥物治療。</p>
+            <p style="margin-top: 4px;">© 2026 TOWER+ All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- 底部固定行動按鈕列 -->
+    <div class="bottom-bar">
+        <div class="bottom-bar-inner">
+            <a href="#checkout" class="btn-submit">🛒 立即前往訂購區</a>
+        </div>
+    </div>
+
+    <script>
+        function selectPlan(plan, price, element) {
+            // 切換選取卡片樣式
+            document.querySelectorAll('.price-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+
+            // 切換下拉選單
+            const select = document.getElementById('planSelect');
+            if(plan === '1袋') {
+                select.selectedIndex = 0;
+            } else {
+                select.selectedIndex = 1;
+            }
+            updateFormPrice();
+
+            // 平滑滾動至表單區
+            document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateFormPrice() {
+            const select = document.getElementById('planSelect');
+            const qty = parseInt(document.getElementById('orderQty').value) || 1;
+            let unitPrice = select.value.includes('1,620') ? 1620 : 2900;
+            let total = unitPrice * qty;
+            document.getElementById('totalPriceDisplay').innerText = 'NT$ ' + total.toLocaleString();
+        }
+
+        function handleOrderSubmit() {
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const plan = document.getElementById('planSelect').value;
+            const total = document.getElementById('totalPriceDisplay').innerText;
+
+            alert(`🎉 感謝 ${name} 訂購！
+
+方案：${plan}
+金額：${total}
+
+我們將儘快安排出貨並傳送簡訊通知（${phone}）。`);
+            document.getElementById('orderForm').reset();
+            updateFormPrice();
+        }
+    </script>
+</body>
+</html>
